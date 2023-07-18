@@ -57,4 +57,4 @@ H5P.DragTextSheridan.StopWatch = (function () {
   return StopWatch;
 })();
 
-export default H5P.DragTextSheriadn.StopWatch;
+export default H5P.DragTextSheridan.StopWatch;

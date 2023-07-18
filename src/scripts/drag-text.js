@@ -68,7 +68,7 @@ H5P.DragTextSheridan = (function ($, Question, ConfirmationDialog) {
    *
    * @returns {Object} DragText Drag Text instance
    */
-  function DragText(params, contentId, contentData) {
+  function DragTextSheridan(params, contentId, contentData) {
     this.$ = $(this);
     this.contentId = contentId;
     this.contentData = contentData;
@@ -215,15 +215,15 @@ H5P.DragTextSheridan = (function ($, Question, ConfirmationDialog) {
     }
   }
 
-  DragText.prototype = Object.create(Question.prototype);
-  DragText.prototype.constructor = DragText;
+  DragTextSheridan.prototype = Object.create(Question.prototype);
+  DragTextSheridan.prototype.constructor = DragTextSheridan;
 
   /**
    * Updates the state of a droppable element
    *
    * @param event
    */
-  DragText.prototype.updateDroppableElement = function(event) {
+  DragTextSheridan.prototype.updateDroppableElement = function(event) {
     const dropZone = event.data.target;
     const draggable = event.data.element;
     const droppable = this.getDroppableByElement(dropZone);
@@ -236,7 +236,7 @@ H5P.DragTextSheridan = (function ($, Question, ConfirmationDialog) {
   /**
    * Remove controls from dropzones if all is empty
    */
-  DragText.prototype.removeControlsFromDropZonesIfAllEmpty = function() {
+  DragTextSheridan.prototype.removeControlsFromDropZonesIfAllEmpty = function() {
     if (!this.anyDropZoneHasDraggable()) {
       this.removeAllDroppablesFromControls();
     }
@@ -245,7 +245,7 @@ H5P.DragTextSheridan = (function ($, Question, ConfirmationDialog) {
   /**
    * Remove controls from dropzones without draggables
    */
-  DragText.prototype.removeControlsFromEmptyDropZones = function() {
+  DragTextSheridan.prototype.removeControlsFromEmptyDropZones = function() {
     this.droppables
       .filter(droppable => !droppable.hasDraggable())
       .map(droppable => droppable.getElement())
@@ -257,7 +257,7 @@ H5P.DragTextSheridan = (function ($, Question, ConfirmationDialog) {
   /**
    * Add all drop zones to drop keyboard controls
    */
-  DragText.prototype.addAllDroppablesToControls = function() {
+  DragTextSheridan.prototype.addAllDroppablesToControls = function() {
     // to have a clean start, remove all first
     if(this.dropControls.count() > 0){
       this.removeAllDroppablesFromControls();
@@ -272,7 +272,7 @@ H5P.DragTextSheridan = (function ($, Question, ConfirmationDialog) {
   /**
    * Remove all drop zones from drop keyboard controls
    */
-  DragText.prototype.removeAllDroppablesFromControls = function() {
+  DragTextSheridan.prototype.removeAllDroppablesFromControls = function() {
     this.droppables
       .map(droppable => droppable.getElement())
       .forEach(el => this.dropControls.removeElement(el));
@@ -281,7 +281,7 @@ H5P.DragTextSheridan = (function ($, Question, ConfirmationDialog) {
   /**
    * Remove all drop zones from drop keyboard controls
    */
-  DragText.prototype.anyDropZoneHasDraggable = function() {
+  DragTextSheridan.prototype.anyDropZoneHasDraggable = function() {
     return this.droppables.some(droppable => droppable.hasDraggable());
   };
 
@@ -292,7 +292,7 @@ H5P.DragTextSheridan = (function ($, Question, ConfirmationDialog) {
    * @param {string} text
    * @param {number} index
    */
-  DragText.prototype.setDroppableLabel = function(dropZone, text, index) {
+  DragTextSheridan.prototype.setDroppableLabel = function(dropZone, text, index) {
     const indexText = this.params.dropZoneIndex.replace('@index', index.toString());
     const correctFeedback = dropZone.classList.contains('h5p-drag-correct-feedback');
     const inCorrectFeedback = dropZone.classList.contains('h5p-drag-wrong-feedback');
@@ -334,7 +334,7 @@ H5P.DragTextSheridan = (function ($, Question, ConfirmationDialog) {
    * Registers this question type's DOM elements before they are attached.
    * Called from H5P.Question.
    */
-  DragText.prototype.registerDomElements = function () {
+  DragTextSheridan.prototype.registerDomElements = function () {
     // Register optional media
     let media = this.params.media;
     if (media && media.type && media.type.library) {
@@ -381,7 +381,7 @@ H5P.DragTextSheridan = (function ($, Question, ConfirmationDialog) {
   /**
    * Initialize drag text task
    */
-  DragText.prototype.initDragText = function () {
+  DragTextSheridan.prototype.initDragText = function () {
     this.$inner = $('<div/>', {
       'aria-describedby': this.introductionId,
       'class': INNER_CONTAINER
@@ -399,14 +399,14 @@ H5P.DragTextSheridan = (function ($, Question, ConfirmationDialog) {
   /**
    * Changes layout responsively when resized.
    */
-  DragText.prototype.resize = function () {
+  DragTextSheridan.prototype.resize = function () {
     this.changeLayoutToFitWidth();
   };
 
   /**
   * Adds the draggables on the right side of the screen if widescreen is detected.
   */
-  DragText.prototype.changeLayoutToFitWidth = function () {
+  DragTextSheridan.prototype.changeLayoutToFitWidth = function () {
     var self = this;
     self.addDropzoneWidth();
 
@@ -439,7 +439,7 @@ H5P.DragTextSheridan = (function ($, Question, ConfirmationDialog) {
   /**
    * Add check solution, show solution and retry buttons, and their functionality.
    */
-  DragText.prototype.addButtons = function () {
+  DragTextSheridan.prototype.addButtons = function () {
     var self = this;
 
     if (self.params.behaviour.enableCheckButton) {
@@ -520,7 +520,7 @@ H5P.DragTextSheridan = (function ($, Question, ConfirmationDialog) {
    * Removes keyboard support for all elements left in the draggables
    * list.
    */
-  DragText.prototype.removeAllElementsFromDragControl = function () {
+  DragTextSheridan.prototype.removeAllElementsFromDragControl = function () {
     this.dragControls.elements.forEach(element => this.dragControls.removeElement(element));
   };
 
@@ -531,7 +531,7 @@ H5P.DragTextSheridan = (function ($, Question, ConfirmationDialog) {
    *
    * @fires H5P.DragText#start
    */
-  DragText.prototype.keyboardDraggableSelected = function (event) {
+  DragTextSheridan.prototype.keyboardDraggableSelected = function (event) {
     var tmp = this.selectedElement;
     var hasSelectedElement = this.selectedElement !== undefined;
     var isSelectedElement = this.selectedElement ===  event.element;
@@ -553,7 +553,7 @@ H5P.DragTextSheridan = (function ($, Question, ConfirmationDialog) {
   /**
    * Focuses on the first empty drop zone
    */
-  DragText.prototype.focusOnFirstEmptyDropZone = function() {
+  DragTextSheridan.prototype.focusOnFirstEmptyDropZone = function() {
     const dropZone = this.droppables
       .filter(droppable => !droppable.hasDraggable())[0];
     const element = dropZone.getElement();
@@ -569,7 +569,7 @@ H5P.DragTextSheridan = (function ($, Question, ConfirmationDialog) {
    *
    * @return {boolean}
    */
-  DragText.prototype.isElementDisabled = function (element) {
+  DragTextSheridan.prototype.isElementDisabled = function (element) {
     return element.getAttribute('aria-disabled') === 'true';
   };
 
@@ -578,7 +578,7 @@ H5P.DragTextSheridan = (function ($, Question, ConfirmationDialog) {
    *
    * @param {ControlsEvent} event
    */
-  DragText.prototype.keyboardDroppableSelected = function (event) {
+  DragTextSheridan.prototype.keyboardDroppableSelected = function (event) {
     var self = this;
 
     var droppableElement = event.element;
@@ -614,7 +614,7 @@ H5P.DragTextSheridan = (function ($, Question, ConfirmationDialog) {
   /**
    * Initialize drag text task
    */
-  DragText.prototype.toggleDraggablesContainer = function () {
+  DragTextSheridan.prototype.toggleDraggablesContainer = function () {
     var isEmpty = this.$draggables.children().length === 0;
     this.$draggables.toggleClass('hide', isEmpty);
   };
@@ -627,7 +627,7 @@ H5P.DragTextSheridan = (function ($, Question, ConfirmationDialog) {
    *
    * @returns {ConfirmationDialog}
    */
-  DragText.prototype.createConfirmResetDialog = function (callback, scope) {
+  DragTextSheridan.prototype.createConfirmResetDialog = function (callback, scope) {
     var self = this;
     var dialog = new ConfirmationDialog({
       headerText: self.params.resetDropTitle,
@@ -643,7 +643,7 @@ H5P.DragTextSheridan = (function ($, Question, ConfirmationDialog) {
   /**
    * Shows feedback for dropzones.
    */
-  DragText.prototype.showDropzoneFeedback = function () {
+  DragTextSheridan.prototype.showDropzoneFeedback = function () {
     this.droppables.forEach(droppable => {
       droppable.addFeedback();
       const draggable = droppable.containedDraggable;
@@ -659,7 +659,7 @@ H5P.DragTextSheridan = (function ($, Question, ConfirmationDialog) {
    * Generates data that is used to render the explanation container
    * at the bottom of the content type
    */
-  DragText.prototype.showExplanation = function () {
+  DragTextSheridan.prototype.showExplanation = function () {
     const self = this;
     let explanations = [];
 
@@ -696,7 +696,7 @@ H5P.DragTextSheridan = (function ($, Question, ConfirmationDialog) {
    *
    * @returns {Boolean} Returns true if maxScore was achieved.
    */
-  DragText.prototype.showEvaluation = function (skipXapi) {
+  DragTextSheridan.prototype.showEvaluation = function (skipXapi) {
     this.hideEvaluation();
     this.showDropzoneFeedback();
     this.showExplanation();
@@ -735,7 +735,7 @@ H5P.DragTextSheridan = (function ($, Question, ConfirmationDialog) {
    *
    * @returns {number}
    */
-  DragText.prototype.calculateScore = function () {
+  DragTextSheridan.prototype.calculateScore = function () {
     return this.droppables.reduce(function (sum, entry) {
       return sum + (entry.isCorrect() ? 1 : 0);
     }, 0);
@@ -744,7 +744,7 @@ H5P.DragTextSheridan = (function ($, Question, ConfirmationDialog) {
   /**
    * Clear the evaluation text.
    */
-  DragText.prototype.hideEvaluation = function () {
+  DragTextSheridan.prototype.hideEvaluation = function () {
     this.removeFeedback();
     this.trigger('resize');
   };
@@ -752,7 +752,7 @@ H5P.DragTextSheridan = (function ($, Question, ConfirmationDialog) {
   /**
    * Remove the explanation container
    */
-  DragText.prototype.hideExplanation = function () {
+  DragTextSheridan.prototype.hideExplanation = function () {
     this.setExplanation();
     this.trigger('resize');
   };
@@ -760,7 +760,7 @@ H5P.DragTextSheridan = (function ($, Question, ConfirmationDialog) {
   /**
    * Hides solution text for all dropzones.
    */
-  DragText.prototype.hideAllSolutions = function () {
+  DragTextSheridan.prototype.hideAllSolutions = function () {
     this.droppables.forEach(function (droppable) {
       droppable.hideSolution();
     });
@@ -772,7 +772,7 @@ H5P.DragTextSheridan = (function ($, Question, ConfirmationDialog) {
    *
    * @param {jQuery} $container The object which our task will attach to.
    */
-  DragText.prototype.addTaskTo = function ($container) {
+  DragTextSheridan.prototype.addTaskTo = function ($container) {
     var self = this;
     self.widest = 0;
     self.widestDraggable = 0;
@@ -819,14 +819,14 @@ H5P.DragTextSheridan = (function ($, Question, ConfirmationDialog) {
    *
    * @returns {boolean}
    */
-  DragText.prototype.isAnswerPart = function(part) {
+  DragTextSheridan.prototype.isAnswerPart = function(part) {
     return Util.startsWith('*', part) && Util.endsWith('*', part);
   };
 
   /**
    * Matches the width of all dropzones to the widest draggable, and sets widest class variable.
    */
-  DragText.prototype.addDropzoneWidth = function () {
+  DragTextSheridan.prototype.addDropzoneWidth = function () {
     var self = this;
     var widest = 0;
     var widestDragagble = 0;
@@ -881,7 +881,7 @@ H5P.DragTextSheridan = (function ($, Question, ConfirmationDialog) {
    *
    * @returns {H5P.TextDraggable}
    */
-  DragText.prototype.createDraggable = function (answer) {
+  DragTextSheridan.prototype.createDraggable = function (answer) {
     var self = this;
 
     //Make the draggable
@@ -928,7 +928,7 @@ H5P.DragTextSheridan = (function ($, Question, ConfirmationDialog) {
    *
    * @returns {H5P.TextDroppable}
    */
-  DragText.prototype.createDroppable = function (answer, tip, correctFeedback, incorrectFeedback) {
+  DragTextSheridan.prototype.createDroppable = function (answer, tip, correctFeedback, incorrectFeedback) {
     var self = this;
 
     var draggableIndex = this.draggables.length;
@@ -979,7 +979,7 @@ H5P.DragTextSheridan = (function ($, Question, ConfirmationDialog) {
    * @function
    * @returns {boolean}
    */
-  DragText.prototype.propagateDragEvent = Util.curry(function(eventName, self, event) {
+  DragTextSheridan.prototype.propagateDragEvent = Util.curry(function(eventName, self, event) {
     self.trigger(eventName, {
       element: event.target
     });
@@ -993,7 +993,7 @@ H5P.DragTextSheridan = (function ($, Question, ConfirmationDialog) {
    * @fires H5P.DragText#revert
    * @fires Question#resize
    */
-  DragText.prototype.revert = function (draggable) {
+  DragTextSheridan.prototype.revert = function (draggable) {
     var droppable = draggable.removeFromZone();
     var target = droppable ? droppable.getElement() : undefined;
     draggable.revertDraggableTo(this.$draggables);
@@ -1013,7 +1013,7 @@ H5P.DragTextSheridan = (function ($, Question, ConfirmationDialog) {
    * @fires H5P.DragText#drop
    * @fires Question#resize
    */
-  DragText.prototype.drop = function (draggable, droppable) {
+  DragTextSheridan.prototype.drop = function (draggable, droppable) {
     var self = this;
     self.answered = true;
 
@@ -1060,7 +1060,7 @@ H5P.DragTextSheridan = (function ($, Question, ConfirmationDialog) {
    *
    * @returns {H5P.TextDraggable[]}
    */
-  DragText.prototype.shuffleAndAddDraggables = function ($container) {
+  DragTextSheridan.prototype.shuffleAndAddDraggables = function ($container) {
     return Util.shuffle(this.draggables)
       .map((draggable, index) => draggable.setIndex(index))
       .map(draggable => this.addDraggableToContainer($container, draggable))
@@ -1075,7 +1075,7 @@ H5P.DragTextSheridan = (function ($, Question, ConfirmationDialog) {
    *
    * @return {H5P.TextDraggable}
    */
-  DragText.prototype.setDraggableAriaLabel = function (draggable) {
+  DragTextSheridan.prototype.setDraggableAriaLabel = function (draggable) {
     draggable.updateAriaLabel(this.params.ariaDraggableIndex
       .replace('@index', (draggable.getIndex() + 1).toString())
       .replace('@count', this.draggables.length.toString()));
@@ -1089,7 +1089,7 @@ H5P.DragTextSheridan = (function ($, Question, ConfirmationDialog) {
    * @param {HTMLElement} element
    * @returns {boolean}
    */
-  DragText.prototype.isGrabbed = function (element) {
+  DragTextSheridan.prototype.isGrabbed = function (element) {
     return element.getAttribute("aria-grabbed") === 'true';
   };
 
@@ -1101,7 +1101,7 @@ H5P.DragTextSheridan = (function ($, Question, ConfirmationDialog) {
    *
    * @returns {H5P.TextDraggable}
    */
-  DragText.prototype.addDraggableToContainer = function ($container, draggable) {
+  DragTextSheridan.prototype.addDraggableToContainer = function ($container, draggable) {
     draggable.appendDraggableTo($container);
     return draggable;
   };
@@ -1114,7 +1114,7 @@ H5P.DragTextSheridan = (function ($, Question, ConfirmationDialog) {
    *
    * @returns {H5P.TextDraggable}
    */
-  DragText.prototype.addDraggableToControls = function (controls, draggable) {
+  DragTextSheridan.prototype.addDraggableToControls = function (controls, draggable) {
     controls.addElement(draggable.getElement());
     return draggable;
   };
@@ -1122,7 +1122,7 @@ H5P.DragTextSheridan = (function ($, Question, ConfirmationDialog) {
   /**
    * Feedback function for checking if all fields are filled, and show evaluation if that is the case.
    */
-  DragText.prototype.instantFeedbackEvaluation = function () {
+  DragTextSheridan.prototype.instantFeedbackEvaluation = function () {
     var self = this;
     var allFilled = self.isAllAnswersFilled();
 
@@ -1153,7 +1153,7 @@ H5P.DragTextSheridan = (function ($, Question, ConfirmationDialog) {
    *
    * @returns {boolean} allFilled Returns true if all answers are answered
    */
-  DragText.prototype.isAllAnswersFilled = function () {
+  DragTextSheridan.prototype.isAllAnswersFilled = function () {
     return this.draggables.every(function(draggable){
       return draggable.isInsideDropZone();
     });
@@ -1162,7 +1162,7 @@ H5P.DragTextSheridan = (function ($, Question, ConfirmationDialog) {
   /**
    * Enables all dropzones and all draggables.
    */
-  DragText.prototype.enableAllDropzonesAndDraggables = function () {
+  DragTextSheridan.prototype.enableAllDropzonesAndDraggables = function () {
     this.enableDraggables();
     this.droppables.forEach(function (droppable) {
       droppable.enableDropzone();
@@ -1172,7 +1172,7 @@ H5P.DragTextSheridan = (function ($, Question, ConfirmationDialog) {
   /**
    * Disables all draggables, user will not be able to interact with them any more.
    */
-  DragText.prototype.disableDraggables = function () {
+  DragTextSheridan.prototype.disableDraggables = function () {
     this.draggables.forEach(function (entry) {
       entry.disableDraggable();
     });
@@ -1181,7 +1181,7 @@ H5P.DragTextSheridan = (function ($, Question, ConfirmationDialog) {
   /**
    * Enables all draggables, user will be able to interact with them again.
    */
-  DragText.prototype.enableDraggables = function () {
+  DragTextSheridan.prototype.enableDraggables = function () {
     this.draggables.forEach(function (entry) {
       entry.enableDraggable();
     });
@@ -1193,7 +1193,7 @@ H5P.DragTextSheridan = (function ($, Question, ConfirmationDialog) {
    *
    * @returns {Boolean} true
    */
-  DragText.prototype.getAnswerGiven = function () {
+  DragTextSheridan.prototype.getAnswerGiven = function () {
     return this.answered;
   };
 
@@ -1203,7 +1203,7 @@ H5P.DragTextSheridan = (function ($, Question, ConfirmationDialog) {
    *
    * @returns {Number} The current score.
    */
-  DragText.prototype.getScore = function () {
+  DragTextSheridan.prototype.getScore = function () {
     return this.calculateScore();
   };
 
@@ -1213,7 +1213,7 @@ H5P.DragTextSheridan = (function ($, Question, ConfirmationDialog) {
    *
    * @returns {Number} The maximum score.
    */
-  DragText.prototype.getMaxScore = function () {
+  DragTextSheridan.prototype.getMaxScore = function () {
     return this.droppables.length;
   };
 
@@ -1222,14 +1222,14 @@ H5P.DragTextSheridan = (function ($, Question, ConfirmationDialog) {
    *
    * @returns {string} title
    */
-  DragText.prototype.getTitle = function () {
+  DragTextSheridan.prototype.getTitle = function () {
     return H5P.createTitle((this.contentData && this.contentData.metadata && this.contentData.metadata.title) ? this.contentData.metadata.title : 'Drag the Words');
   };
 
   /**
    * Toogles the drop effect based on if an element is selected
    */
-  DragText.prototype.toggleDropEffect = function () {
+  DragTextSheridan.prototype.toggleDropEffect = function () {
     var hasSelectedElement = this.selectedElement !== undefined;
     this.ariaDropControls[hasSelectedElement ? 'setAllToMove' : 'setAllToNone']();
   };
@@ -1241,7 +1241,7 @@ H5P.DragTextSheridan = (function ($, Question, ConfirmationDialog) {
    *
    * @returns {H5P.TextDraggable}
    */
-  DragText.prototype.getDraggableByElement = function (el) {
+  DragTextSheridan.prototype.getDraggableByElement = function (el) {
     return this.draggables.filter(function(draggable){
       return draggable.$draggable.get(0) === el;
     }, this)[0];
@@ -1254,7 +1254,7 @@ H5P.DragTextSheridan = (function ($, Question, ConfirmationDialog) {
    *
    * @returns {H5P.TextDroppable}
    */
-  DragText.prototype.getDroppableByElement = function (el) {
+  DragTextSheridan.prototype.getDroppableByElement = function (el) {
     return this.droppables.filter(function(droppable){
       return droppable.$dropzone.get(0) === el;
     }, this)[0];
@@ -1264,7 +1264,7 @@ H5P.DragTextSheridan = (function ($, Question, ConfirmationDialog) {
    * Used for contracts.
    * Sets feedback on the dropzones.
    */
-  DragText.prototype.showSolutions = function () {
+  DragTextSheridan.prototype.showSolutions = function () {
     this.showEvaluation(true);
     this.droppables.forEach(function (droppable) {
       droppable.addFeedback();
@@ -1284,7 +1284,7 @@ H5P.DragTextSheridan = (function ($, Question, ConfirmationDialog) {
    * Used for contracts.
    * Resets the complete task back to its' initial state.
    */
-  DragText.prototype.resetTask = function () {
+  DragTextSheridan.prototype.resetTask = function () {
     var self = this;
     // Reset task answer
     self.answered = false;
@@ -1308,7 +1308,7 @@ H5P.DragTextSheridan = (function ($, Question, ConfirmationDialog) {
   /**
    * Resets the position of all draggables shuffled.
    */
-  DragText.prototype.resetDraggables = function () {
+  DragTextSheridan.prototype.resetDraggables = function () {
     Util.shuffle(this.draggables).forEach(this.revert, this);
   };
 
@@ -1317,7 +1317,7 @@ H5P.DragTextSheridan = (function ($, Question, ConfirmationDialog) {
    *
    * @returns {object} containing indexes of dropped words
    */
-  DragText.prototype.getCurrentState = function () {
+  DragTextSheridan.prototype.getCurrentState = function () {
     // Return undefined if task is not initialized
     if (this.draggables === undefined) {
       return undefined;
@@ -1334,7 +1334,7 @@ H5P.DragTextSheridan = (function ($, Question, ConfirmationDialog) {
   /**
    * Sets answers to current user state
    */
-  DragText.prototype.setH5PUserState = function () {
+  DragTextSheridan.prototype.setH5PUserState = function () {
     const self = this;
 
     // Do nothing if user state is undefined
@@ -1389,7 +1389,7 @@ H5P.DragTextSheridan = (function ($, Question, ConfirmationDialog) {
    * @param {number} index
    * @return {boolean}
    */
-  DragText.prototype.isValidIndex = function(index) {
+  DragTextSheridan.prototype.isValidIndex = function(index) {
     return !isNaN(index) && (index < this.draggables.length) && (index >= 0);
   };
 
@@ -1399,7 +1399,7 @@ H5P.DragTextSheridan = (function ($, Question, ConfirmationDialog) {
    * @param {number} initialIndex
    * @return {Draggable}
    */
-  DragText.prototype.getDraggableByInitialIndex = function(initialIndex) {
+  DragTextSheridan.prototype.getDraggableByInitialIndex = function(initialIndex) {
     return this.draggables.filter(draggable => draggable.hasInitialIndex(initialIndex))[0];
   };
 
@@ -1411,7 +1411,7 @@ H5P.DragTextSheridan = (function ($, Question, ConfirmationDialog) {
 	 *
    * @returns {Object} xAPI data
    */
-  DragText.prototype.getXAPIData = function () {
+  DragTextSheridan.prototype.getXAPIData = function () {
     var xAPIEvent = this.createXAPIEventTemplate('answered');
     this.addQuestionToXAPI(xAPIEvent);
     this.addResponseToXAPI(xAPIEvent);
@@ -1426,7 +1426,7 @@ H5P.DragTextSheridan = (function ($, Question, ConfirmationDialog) {
    *
    * @param xAPIEvent
    */
-  DragText.prototype.addQuestionToXAPI = function (xAPIEvent) {
+  DragTextSheridan.prototype.addQuestionToXAPI = function (xAPIEvent) {
     var definition = xAPIEvent.getVerifiedStatementValue(['object','definition']);
     $.extend(definition, this.getxAPIDefinition());
   };
@@ -1436,7 +1436,7 @@ H5P.DragTextSheridan = (function ($, Question, ConfirmationDialog) {
    *
    * @returns {Object}
    */
-  DragText.prototype.getxAPIDefinition = function () {
+  DragTextSheridan.prototype.getxAPIDefinition = function () {
     var definition = {};
     definition.interactionType = 'fill-in';
     definition.type = 'http://adlnet.gov/expapi/activities/cmi.interaction';
@@ -1461,7 +1461,7 @@ H5P.DragTextSheridan = (function ($, Question, ConfirmationDialog) {
    * @param {H5P.XAPIEvent} xAPIEvent
    *  The xAPI event we will add a response to
    */
-  DragText.prototype.addResponseToXAPI = function (xAPIEvent) {
+  DragTextSheridan.prototype.addResponseToXAPI = function (xAPIEvent) {
     var self = this;
     var currentScore = self.getScore();
     var maxScore = self.droppables.length;
@@ -1493,7 +1493,7 @@ H5P.DragTextSheridan = (function ($, Question, ConfirmationDialog) {
    *
    * @returns {string} User answers separated by the "[,]" pattern
    */
-  DragText.prototype.getXAPIResponse = function () {
+  DragTextSheridan.prototype.getXAPIResponse = function () {
      return this.droppables
       .map(droppable => droppable.hasDraggable() ? droppable.containedDraggable.text : '')
       .join('[,]');
@@ -1505,7 +1505,7 @@ H5P.DragTextSheridan = (function ($, Question, ConfirmationDialog) {
 	 * @param {string} question
 	 * @returns {string}
 	 */
-  DragText.prototype.replaceSolutionsWithBlanks = function (question) {
+  DragTextSheridan.prototype.replaceSolutionsWithBlanks = function (question) {
     return parseText(question)
       .map(part => this.isAnswerPart(part) ? '__________' : part)
       .join('');
@@ -1517,7 +1517,7 @@ H5P.DragTextSheridan = (function ($, Question, ConfirmationDialog) {
 	 * @param {string} question
 	 * @returns {string} Array with a string containing solutions of a question
 	 */
-  DragText.prototype.getSolutionsFromQuestion = function (question) {
+  DragTextSheridan.prototype.getSolutionsFromQuestion = function (question) {
     return parseText(question)
       .filter(this.isAnswerPart)
       .map(part => lex(part))
@@ -1531,11 +1531,11 @@ H5P.DragTextSheridan = (function ($, Question, ConfirmationDialog) {
    * @param {string} question
    * @returns {string} Array with a string containing solutions of a question
    */
-  DragText.prototype.parseText = function (question) {
+  DragTextSheridan.prototype.parseText = function (question) {
     return parseText(question);
   };
 
-  return DragText;
+  return DragTextSheridan;
 
 }(H5P.jQuery, H5P.Question, H5P.ConfirmationDialog));
 

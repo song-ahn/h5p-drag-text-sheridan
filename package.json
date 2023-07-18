@@ -1,5 +1,5 @@
 {
-  "name": "h5p-drag-text-sheridan",
+  "name": "h5p-drag-text",
   "version": "1.0.0",
   "private": true,
   "description": "Drag the Words allows content designers to create textual expressions with missing pieces of text. The end user drags a missing piece of text to its correct place, to form a complete expression.",
