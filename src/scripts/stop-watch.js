@@ -1,7 +1,8 @@
+//@@SONG: Changed class name to DragTextSheridan
 var H5P = H5P || {};
-H5P.DragText = H5P.DragText || {};
+H5P.DragTextSheridan = H5P.DragTextSheridan || {};
 
-H5P.DragText.StopWatch = (function () {
+H5P.DragTextSheridan.StopWatch = (function () {
   /**
    * @class {H5P.DragText.StopWatch}
    * @constructor
@@ -56,4 +57,4 @@ H5P.DragText.StopWatch = (function () {
   return StopWatch;
 })();
 
-export default H5P.DragText.StopWatch;
+export default H5P.DragTextSheriadn.StopWatch;

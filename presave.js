@@ -8,7 +8,8 @@ var H5PPresave = H5PPresave || {};
  * @param finished
  * @constructor
  */
-H5PPresave['H5P.DragText'] = function (content, finished) {
+//@@SONG: Changed class name to DragTextSheridan
+H5PPresave['H5P.DragTextSheridan'] = function (content, finished) {
   var presave = H5PEditor.Presave;
   var score = 0;
   if (isContentValid()) {

@@ -1,6 +1,7 @@
 var H5PUpgrades = H5PUpgrades || {};
 
-H5PUpgrades['H5P.DragText'] = (function ($) {
+//@@SONG: Changed class name to
+H5PUpgrades['H5P.DragTextSheridan'] = (function ($) {
   return {
     1: {
       1: {

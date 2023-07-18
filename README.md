@@ -22,3 +22,6 @@ Run tests:
 ```bash
 npm test
 ```
+
+## Changes
+

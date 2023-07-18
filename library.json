@@ -1,9 +1,9 @@
 {
-  "title": "Drag the Words",
+  "title": "Drag the Words - Sheridan",
   "description": "Drag and drop pieces of text to create complete sentences.",
   "majorVersion": 1,
-  "minorVersion": 10,
-  "patchVersion": 7,
+  "minorVersion": 0,
+  "patchVersion": 0,
   "coreApi": {
     "majorVersion": 1,
     "minorVersion": 19
@@ -14,7 +14,7 @@
   ],
   "author": "Joubel",
   "license": "MIT",
-  "machineName": "H5P.DragText",
+  "machineName": "H5P.DragTextSheridan",
   "preloadedCss": [
     {
       "path": "dist/h5p-drag-text.css"

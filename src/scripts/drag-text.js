@@ -44,7 +44,8 @@ import Mouse from 'h5p-lib-controls/src/scripts/ui/mouse';
  * Drag Text module
  * @external {jQuery} $ H5P.jQuery
  */
-H5P.DragText = (function ($, Question, ConfirmationDialog) {
+//@@SONG: Changed class name to DragTextSheridan
+H5P.DragTextSheridan = (function ($, Question, ConfirmationDialog) {
   //CSS Main Containers:
   var INNER_CONTAINER = "h5p-drag-inner";
   var TASK_CONTAINER = "h5p-drag-task";
@@ -1568,7 +1569,7 @@ H5P.DragText = (function ($, Question, ConfirmationDialog) {
  *
  * @param {string} question Question text for an H5P.DragText content item
  */
-H5P.DragText.parseText = function (question) {
+H5P.DragTextSheridan.parseText = function (question) {
   const isAnswerPart = function (part) {
     return Util.startsWith('*', part) && Util.endsWith('*', part);
   };
@@ -1585,4 +1586,4 @@ H5P.DragText.parseText = function (question) {
     );
 };
 
-export default H5P.DragText;
+export default H5P.DragTextSheridan;
