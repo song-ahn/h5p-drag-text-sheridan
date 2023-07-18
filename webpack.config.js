@@ -29,6 +29,19 @@ module.exports = (env, argv) => {
             'css-loader'
           ]
         },
+        //@@SONG: load font file using url-loader
+        {
+            test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+            include: path.join(__dirname, 'src/fonts'),
+            use: [
+                {
+                    loader: 'url-loader',
+                    options: {
+                        limit: 10000
+                    }
+                }
+            ]
+        },
         {
           test: /\.(svg)$/,
           include: path.join(__dirname, 'src/images'),
