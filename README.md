@@ -24,4 +24,8 @@ npm test
 ```
 
 ## Changes
-
+- Forked from the original v1.10.7
+- Reset the version
+- Changed the class & type name
+- Changed the default font
+- Added the font options in the RTF edtor
